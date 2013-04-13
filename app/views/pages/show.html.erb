@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @page.title %>
+</p>
+<style>
+<%= Pygments.css %>
+</style>
+<p>
+  <b>Body:</b>
+<%	
+	pygmentized = Pygmentize.new(:filter_html => true, :hard_wrap => true)
+	markdown = Redcarpet::Markdown.new(pygmentized, :fenced_code_blocks => true, :autolink => true)
+%>
+<%=raw markdown.render @page.body %>
+
+</p>
+
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>

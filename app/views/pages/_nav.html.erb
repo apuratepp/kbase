@@ -1,0 +1,21 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <ul class="nav">
+  	<% if @page && !@page.new_record? %>
+    <a class="brand" href="#"><%= @page.title %></a>
+      <li class="<%= 'active' if %w(show).include?(controller.action_name) %>">
+      	<%= link_to icon('icon-eye-open').html_safe, @page %>
+      </li>
+	  <li class="<%= 'active' if %w(edit).include?(controller.action_name) %>">
+	  	<%= link_to icon('icon-pencil').html_safe, edit_page_path(@page) %>
+	  </li>
+    <% else %>
+      <li class="<%= 'active' if %w(new).include?(controller.action_name) %>">
+        <%= link_to icon('icon-plus-sign').html_safe + ' Add Page', new_page_path %></li>
+    <% end %>
+    </ul>
+    <ul class="nav pull-right">
+  	  <li><%= link_to icon('icon-home').html_safe + " Knowledge Base", pages_path %></a></li>
+    </ul>
+  </div>
+</div>

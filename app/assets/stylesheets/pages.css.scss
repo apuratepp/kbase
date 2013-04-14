@@ -1,3 +1,25 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+	margin-top: 10px;
+	font-family: 'PT Sans';	
+}
+
+pre {
+	font-size: 9pt;
+}
+
+input#page_title {
+	width: 98%;
+	font-weight: bold;
+}
+
+textarea#page_body {
+	width: 98%;
+}
+
+td.icon {
+	width: 16px;
+}

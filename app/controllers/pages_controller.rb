@@ -4,7 +4,8 @@ class PagesController < ApplicationController
   def index
     #@pages = Page.all
     @pages        = current_user.pages
-    @public_pages = Page.where("public = ? AND user_id IS NOT ?", true, current_user.id)
+    #@public_pages = Page.where("public = ? AND user_id IS NOT ?", true, current_user.id)
+    @public_pages = Page.where("public = ? AND user_id != ?", true, current_user.id)
     
     respond_to do |format|
       format.html # index.html.erb

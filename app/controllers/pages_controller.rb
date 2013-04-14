@@ -19,6 +19,9 @@ class PagesController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @page }
     end
+  rescue Exception => e
+    flash[:error] = "Error"
+    render 'error'
   end
 
   # GET /pages/new

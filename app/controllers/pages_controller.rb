@@ -2,7 +2,8 @@ class PagesController < ApplicationController
   # GET /pages
   # GET /pages.json
   def index
-    @pages = Page.all
+    #@pages = Page.all
+    @pages = current_user.pages
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +14,8 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
-    @page = Page.find(params[:id])
+    # @page = Page.find(params[:id])
+    @page = current_user.pages.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,7 +30,8 @@ class PagesController < ApplicationController
   # GET /pages/new
   # GET /pages/new.json
   def new
-    @page = Page.new
+    # @page = Page.new
+    @page = current_user.pages.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,13 +41,15 @@ class PagesController < ApplicationController
 
   # GET /pages/1/edit
   def edit
-    @page = Page.find(params[:id])
+    # @page = Page.find(params[:id])
+    @page = current_user.pages.find(params[:id])
   end
 
   # POST /pages
   # POST /pages.json
   def create
-    @page = Page.new(params[:page])
+    # @page = Page.new(params[:page])
+    @page = current_user.pages.new(params[:page])
 
     respond_to do |format|
       if @page.save
@@ -60,7 +65,8 @@ class PagesController < ApplicationController
   # PUT /pages/1
   # PUT /pages/1.json
   def update
-    @page = Page.find(params[:id])
+    # @page = Page.find(params[:id])
+    @page = current_user.pages.find(params[:id])
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
@@ -76,7 +82,8 @@ class PagesController < ApplicationController
   # DELETE /pages/1
   # DELETE /pages/1.json
   def destroy
-    @page = Page.find(params[:id])
+    # @page = Page.find(params[:id])
+    @page = current_user.pages.find(params[:id])
     @page.destroy
 
     respond_to do |format|

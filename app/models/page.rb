@@ -11,6 +11,8 @@ class Page < ActiveRecord::Base
 
   validates :title, :presence => true
 
+  belongs_to :user
+
   def render
   	pygmentized = Pygmentize.new(:filter_html => true, :hard_wrap => true)
 	markdown = Redcarpet::Markdown.new(pygmentized, :fenced_code_blocks => true, :autolink => true)

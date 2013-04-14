@@ -16,9 +16,13 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
-    #@page = Page.find(params[:id])
+    @page = Page.find(params[:id])
     # @page = current_user.pages.find(params[:id])
-    @page = Page.where(:id => params[:id], :public => true).first
+    if @page.user == current_user
+      @page = current_user.pages.find(params[:id])
+    else
+      @page = Page.where(:id => params[:id], :public => true).first
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,7 +30,7 @@ class PagesController < ApplicationController
     end
   rescue Exception => e
     flash[:error] = "An error"
-    @error = e.original_exception
+    @error = e.inspect
     render 'error'
   end
 

@@ -8,5 +8,13 @@ end
 class Page < ActiveRecord::Base
 
   attr_accessible :body, :title
+
+  validates :title, :presence => true
+
+  def render
+  	pygmentized = Pygmentize.new(:filter_html => true, :hard_wrap => true)
+	markdown = Redcarpet::Markdown.new(pygmentized, :fenced_code_blocks => true, :autolink => true)
+	markdown.render self.body
+  end
 end
 

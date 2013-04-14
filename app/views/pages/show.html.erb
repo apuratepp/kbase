@@ -7,8 +7,5 @@
 <style>
 <%= Pygments.css %>
 </style>
-<%	
-	pygmentized = Pygmentize.new(:filter_html => true, :hard_wrap => true)
-	markdown = Redcarpet::Markdown.new(pygmentized, :fenced_code_blocks => true, :autolink => true)
-%>
-<%=raw markdown.render @page.body %>
+
+<%=raw @page.render %>

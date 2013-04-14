@@ -41,7 +41,7 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-# gem 'github-markdown'
-# gem 'github-markup'
 gem 'pygments.rb'
 gem 'redcarpet'
+
+gem 'devise'

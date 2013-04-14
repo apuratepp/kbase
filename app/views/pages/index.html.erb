@@ -1,15 +1,26 @@
 <%= render 'nav' %>
 
+<h3>My Pages</h3>
+
 <table class="table table-striped table-condensed table-bordered">
 <% @pages.each do |page| %>
   <tr>
-    <td><%= icon('icon-file').html_safe %> <%= link_to page.title, page %></td>
-    <td><%= icon('icon-time').html_safe %> <%= distance_of_time_in_words_to_now page.updated_at %> ago</td>
-    <td><%= icon('icon-user').html_safe %> <%= page.user.email %></td>
-</td>
+  	<td class="public"><%= icon('icon-eye-open').html_safe if page.public %></td>
+    <td class="title"><%= icon('icon-file').html_safe %> <%= link_to page.title, page %></td>
+    <td class="updated_at"><%= icon('icon-time').html_safe %> <%= distance_of_time_in_words_to_now page.updated_at %> ago</td>
+    <td class="email"><%= icon('icon-user').html_safe %> <%= page.user.email %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
+<h3>Public Pages</h3>
 
+<table class="table table-striped table-condensed table-bordered">
+<% @public_pages.each do |page| %>
+  <tr>
+    <td class="title"><%= icon('icon-file').html_safe %> <%= link_to page.title, page %></td>
+    <td class="updated_at"><%= icon('icon-time').html_safe %> <%= distance_of_time_in_words_to_now page.updated_at %> ago</td>
+    <td class="email"><%= icon('icon-user').html_safe %> <%= page.user.email %></td>
+  </tr>
+<% end %>
+</table>

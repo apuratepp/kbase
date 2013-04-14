@@ -23,6 +23,17 @@ textarea#page_body {
 	font-family: 'Panic Sans', monospace;
 }
 
-td.icon {
+td.public {
 	width: 16px;
+}
+
+td.title {
+}
+
+td.updated_at {
+	width: 20%
+}
+
+td.email {
+	width: 30%
 }

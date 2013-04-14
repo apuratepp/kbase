@@ -3,8 +3,9 @@ class PagesController < ApplicationController
   # GET /pages.json
   def index
     #@pages = Page.all
-    @pages = current_user.pages
-
+    @pages        = current_user.pages
+    @public_pages = Page.where("public = ? AND user_id IS NOT ?", true, current_user.id)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @pages }

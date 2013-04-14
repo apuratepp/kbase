@@ -7,7 +7,7 @@ end
 
 class Page < ActiveRecord::Base
 
-  attr_accessible :body, :title
+  attr_accessible :body, :title, :public
 
   validates :title, :presence => true
 

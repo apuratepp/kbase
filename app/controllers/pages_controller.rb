@@ -20,7 +20,8 @@ class PagesController < ApplicationController
       format.json { render json: @page }
     end
   rescue Exception => e
-    flash[:error] = "Error"
+    flash[:error] = "An error"
+    @error = e.original_exception
     render 'error'
   end
 
